@@ -1,0 +1,22 @@
+{% extends "aplicacion/index.html" %}
+{% load static %}
+
+{% block Body %}
+<header class="mastheadconsultas">
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data" id="FormularioConsulta">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+            <button style="margin-top: 1rem;" type="submit">Guardar</button>
+            <button style="margin-top: 1rem;" onclick="history.back()" class="btn btn-secondary btn-sm">Volver</button>
+
+        </form>
+
+    </div>
+</header>
+{% endblock Body %}

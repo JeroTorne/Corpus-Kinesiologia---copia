@@ -1,0 +1,50 @@
+{% extends "aplicacion/index.html" %}
+{% load static %}
+
+
+{% block Body %}
+<header class="mastheadconsultas">
+
+    <section class="container-calendar">
+        <h2>Kinesiología y estética</h2>
+        <h3>Verónica Di Giannantinio M.2871/2</h3>
+        <!-- Google Calendar Vero -->
+        <script>
+            (function() {
+              var target = document.currentScript;
+              window.addEventListener('load', function() {
+                calendar.schedulingButton.load({
+                  url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ39Ss71lFFsqEsxRIU0Xyhiy4Tj6vqj0_ExAwVpANgqpNFOwSZr2UOD5Ym2QJz2g-0yiitXgBFZ?gv=true',
+                  color: '#83008b',
+                  label: 'Reservar un turno',
+                  target,
+                });
+              });
+            })();
+        </script>
+        <!-- end Google Calendar Vero -->
+    </section>
+
+    <section class="container-calendar">
+        <h2>Reeducación postural global</h2>
+        <h3>Guido Bazzana M.1587/2</h3>
+        <!-- Google Calendar Guido -->
+        <script>
+          (function() {
+            var target = document.currentScript;
+            window.addEventListener('load', function() {
+              calendar.schedulingButton.load({
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2dA0hgRTn1GJbUWd-XZzWF82Hlq3x-oUWjI9TBthZqeJFrsdsLTES83owhSlOfKvMPOcgzipXH?gv=true',
+                color: '#83008b',
+                label: 'Reservar un turno',
+                target,
+              });
+            });
+          })();
+          </script>
+        <!-- end Google Calendar Guido -->
+    </section>
+</header>
+
+
+{% endblock Body %}

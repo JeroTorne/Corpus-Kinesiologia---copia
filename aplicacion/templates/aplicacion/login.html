@@ -1,0 +1,25 @@
+{% extends "aplicacion/index.html" %}
+{% load static %}
+
+{% block Body %}
+    <header class="mastheadconsultas">
+                <br>
+
+
+                <form id="FormularioConsulta" style="width: auto;" class="container" action="" method="post">
+                    {% csrf_token %}
+                    <table id="FormularioConsulta" style="text-align: justify;" class="table">
+                    {{ form.as_table }}
+                                    {% if mensaje %}
+                <h4>
+                    <p class="datos-invalidos">
+                    {{ mensaje }}
+                    </p>
+                </h4>
+                {% endif %}
+                    </table>
+                    <button class="pacientebtn" style="width:100%;" type="submit">Iniciar Sesión</button>
+                </form>
+    </header>        
+        
+{% endblock Body %}
