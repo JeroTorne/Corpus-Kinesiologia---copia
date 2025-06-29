@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y(rooq8um)rjj+5_6rljhew7qxz5jo9u(dun6$qag!oigm^j&9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['jerotorne.pythonanywhere.com']
 
 
 # Application definition
@@ -77,14 +77,16 @@ WSGI_APPLICATION = 'corpuskinesio.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'BD_Pacientes',      # Nombre de tu base de datos MySQL
-        'USER': 'usuario_mysql',     # Tu usuario de MySQL
-        'PASSWORD': 'tu_contraseña', # Tu contraseña de MySQL
-        'HOST': 'localhost',         # O la IP de tu servidor MySQL
-        'PORT': '3306',              # Puerto por defecto de MySQL
-    }
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'jerotorne$default',
+    'USER': 'jerotorne',
+    'PASSWORD': ',RE$y?n.m2$tG8u',
+    'HOST': 'jerotorne.mysql.pythonanywhere-services.com',
+    'PORT': '3306',
+    'OPTIONS': {
+        'charset': 'utf8mb4',
+        'use_unicode': True,
+    },
 }
 
 
@@ -134,19 +136,3 @@ LOGOUT_REDIRECT_URL = ''
 
 MEDIA_URL = '/archivos/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "archivos")
-
-# MySQL Database Configuration
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES['default'] = {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'BD_Pacientes',
-    'USER': 'jerotorne',
-    'PASSWORD': ',RE$y?n.m2$tG8u',
-    'HOST': 'localhost',
-    'PORT': '3306',
-    'OPTIONS': {
-        'charset': 'utf8mb4',
-        'use_unicode': True,
-    },
-}
