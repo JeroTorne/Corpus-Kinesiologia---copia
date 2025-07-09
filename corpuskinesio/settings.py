@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y(rooq8um)rjj+5_6rljhew7qxz5jo9u(dun6$qag!oigm^j&9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jerotorne.pythonanywhere.com']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -77,16 +77,17 @@ WSGI_APPLICATION = 'corpuskinesio.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'jerotorne$default',
-    'USER': 'jerotorne',
-    'PASSWORD': ',RE$y?n.m2$tG8u',
-    'HOST': 'jerotorne.mysql.pythonanywhere-services.com',
-    'PORT': '3306',
-    'OPTIONS': {
-        'charset': 'utf8mb4',
-        'use_unicode': True,
-    },
+    'default': { 
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'testjerotorne$default',
+        'USER': 'testjerotorne',
+        'PASSWORD': ',RE$y?n.m2$tG8u',
+        'HOST': 'testjerotorne.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'use_unicode': True,
+        }},
 }
 
 
