@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import DetailView
 from django.utils import timezone
+from django.db.models import Q
 
 
 
@@ -144,10 +145,12 @@ def buscar_paciente(request):
 
 @user_passes_test(is_admin)
 def buscar_paciente2(request):
-    if 'nombre' in request.GET and request.GET['nombre']:
-        nombre = request.GET['nombre'].strip()  # Elimina espacios adicionales
-        # Filtra directamente en el campo 'nombre' del modelo PerfilPaciente
-        paciente = PerfilPaciente.objects.filter(nombre__icontains=nombre)
+    nombre = request.GET.get('nombre', '').strip()
+    apellido = request.GET.get('apellido', '').strip()
+    if nombre or apellido:
+        paciente = PerfilPaciente.objects.filter(
+            Q(nombre__icontains=nombre) | Q(apellido__icontains=apellido)
+        )
         return render(request, "aplicacion/listadopacientes.html", {"paciente": paciente})
     return redirect('lista_pacientes')
 
