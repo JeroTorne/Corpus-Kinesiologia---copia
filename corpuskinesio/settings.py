@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'webkinesio-2025-!@#%&*()_+1234567890abcdefghijklmnopqrstuvwxyz'
+SECRET_KEY = 'django-insecure-y(rooq8um)rjj+5_6rljhew7qxz5jo9u(dun6$qag!oigm^j&9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['corpuskinesiologia.com.ar']
 
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'corpuskinesio.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': { 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testjerotorne$default',
         'USER': 'testjerotorne',
