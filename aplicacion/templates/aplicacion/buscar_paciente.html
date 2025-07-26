@@ -12,13 +12,13 @@
                 </h4>
                 {% endif %}
 
-                <form action="/aplicacion/buscar_paciente2/" id="FormularioConsulta" style="width: auto;" class="container" action="" method="get">
+                <form action="{% url 'buscar_paciente2' %}" id="FormularioConsulta" style="width: auto;" class="container" action="" method="get">
                     {% csrf_token %}
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Buscar Paciente</label>
                     <input type="text" name="nombre" id="nombre">
                     <button class="pacientebtn" style="width:100%;" type="submit">Buscar Usuario</button>
 
                 </form>
-    </header>        
-        
+    </header>
+
 {% endblock Body %}

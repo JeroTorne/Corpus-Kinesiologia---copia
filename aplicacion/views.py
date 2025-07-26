@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import DetailView
 from django.utils import timezone
+from django.db.models import Q
 
 
 
@@ -19,12 +20,12 @@ from django.utils import timezone
 
 
 
-#-------////----------INDEX--------////------------------# 
+#-------////----------INDEX--------////------------------#
 
 def index(request):
     return render (request, "aplicacion/index.html")
 
-#-------////----------FIN INDEX--------////------------------# 
+#-------////----------FIN INDEX--------////------------------#
 
 
 def staff(request):
@@ -33,12 +34,12 @@ def staff(request):
 
 
 
-#-------////----------TURNOS--------////------------------# 
+#-------////----------TURNOS--------////------------------#
 
 def turnos(request):
     return render (request, "aplicacion/turnos.html")
 
-#-------////----------FIN TURNOS--------////------------------# 
+#-------////----------FIN TURNOS--------////------------------#
 
 
 
@@ -96,26 +97,26 @@ def login_request(request):
             user = authenticate(username=usuario, password=clave)
             if user is not None:
                 login(request, user)
-                    
+
                 return render(request, "aplicacion/index.html", {"mensaje": f"Bienvenido {usuario}"})
             else:
                 return render(request, "aplicacion/login.html", {"form":miForm, "mensaje": "Datos Inválidos"})
-        else:    
+        else:
             return render(request, "aplicacion/login.html", {"form":miForm, "mensaje": "Datos Inválidos"})
 
     miForm = AuthenticationForm()
 
-    return render(request, "aplicacion/login.html", {"form":miForm}) 
+    return render(request, "aplicacion/login.html", {"form":miForm})
 
 #-------////----------FIN LOGIN--------////------------------#
 
 
 
-#-------////----------SI ES ADMIN--------////------------------# 
+#-------////----------SI ES ADMIN--------////------------------#
 
 def is_admin(user):
     return user.is_authenticated and user.is_superuser
-#-------////----------FIN SI ES ADMIN--------////------------------# 
+#-------////----------FIN SI ES ADMIN--------////------------------#
 
 #-------////----------CREAR HISTORIA CLINICA--------////------------------#
 
@@ -136,7 +137,7 @@ def crear_historia_clinica(request, paciente_id):
 #-------////----------FIN CREAR HISTORIA CLINICA--------////------------------#
 
 
-#-------////----------BUSCAR PACIENTE--------////------------------# 
+#-------////----------BUSCAR PACIENTE--------////------------------#
 
 @user_passes_test(is_admin)
 def buscar_paciente(request):
@@ -144,10 +145,12 @@ def buscar_paciente(request):
 
 @user_passes_test(is_admin)
 def buscar_paciente2(request):
-    if 'nombre' in request.GET and request.GET['nombre']:
-        nombre = request.GET['nombre'].strip()  # Elimina espacios adicionales
-        # Filtra directamente en el campo 'nombre' del modelo PerfilPaciente
-        paciente = PerfilPaciente.objects.filter(nombre__icontains=nombre)
+    nombre = request.GET.get('nombre', '').strip()
+    apellido = request.GET.get('apellido', '').strip()
+    if nombre or apellido:
+        paciente = PerfilPaciente.objects.filter(
+            Q(nombre__icontains=nombre) | Q(apellido__icontains=apellido)
+        )
         return render(request, "aplicacion/listadopacientes.html", {"paciente": paciente})
     return redirect('lista_pacientes')
 
