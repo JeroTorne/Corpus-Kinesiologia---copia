@@ -21,7 +21,7 @@ from corpuskinesio import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aplicacion/', include('aplicacion.urls')),
+    path('', include('aplicacion.urls')),  # <-- Así todas las rutas quedan en la raíz
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
