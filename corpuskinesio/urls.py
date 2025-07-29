@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('aplicacion.urls')),
-    path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
+    path('sitemap.xml', TemplateView.as_view(template_name='aplicacion/sitemap.xml', content_type='application/xml')),
 ]
 
 # Sirve archivos estáticos en desarrollo
