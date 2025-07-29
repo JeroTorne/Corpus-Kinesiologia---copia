@@ -16,13 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+from django.conf import settings
 from django.conf.urls.static import static
-from corpuskinesio import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('aplicacion.urls')),  # <-- Así todas las rutas quedan en la raíz
+    path('', include('aplicacion.urls')),
+    path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
 ]
+
+# Sirve archivos estáticos en desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
